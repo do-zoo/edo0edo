@@ -1,4 +1,4 @@
-type TokenKeys =
+export type ThemeColorKeys =
   | "50"
   | "100"
   | "200"
@@ -12,5 +12,5 @@ type TokenKeys =
   | "950";
 
 export type ThemeColor = {
-  [key in TokenKeys]: string;
+  [key in ThemeColorKeys]: string;
 };

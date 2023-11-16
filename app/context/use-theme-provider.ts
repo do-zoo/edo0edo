@@ -1,7 +1,5 @@
-import { useContext } from "react";
-import { ThemeContext } from "~/context/theme.context";
+import { themeVars } from "~/configs/theme/contract.css";
 
 export function useThemeProvider() {
-  const { themes, currentTheme } = useContext(ThemeContext);
-  return themes[currentTheme][1];
+  return themeVars;
 }

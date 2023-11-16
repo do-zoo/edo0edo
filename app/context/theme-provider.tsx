@@ -1,8 +1,6 @@
 import * as React from "react";
 import { useGlobalClassName } from "~/hooks";
 import { ThemeContext } from "./theme.context";
-import type { ThemeObject } from "~/configs/theme/type";
-import type { CSSVarFunction, MapLeafNodes } from "@vanilla-extract/private";
 
 export interface ThemeProviderProps {
   /**
@@ -16,10 +14,7 @@ export interface ThemeProviderProps {
   /**
    * Map of available themes.
    */
-  themes: Record<
-    string,
-    [className: string, vars: MapLeafNodes<ThemeObject, CSSVarFunction>]
-  >;
+  themes: Record<string, string>;
   /**
    * Callback triggered when something calls `setTheme` from the hook.
    */
@@ -40,7 +35,7 @@ export const ThemeProvider = ({
       (prev, current) => {
         return {
           ...prev,
-          [current]: themes[current][0],
+          [current]: themes[current],
         };
       },
       {},

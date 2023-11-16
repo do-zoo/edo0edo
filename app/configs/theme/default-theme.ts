@@ -1,3 +1,4 @@
+import type { ThemeColor } from "~/configs/theme/colors";
 import {
   CARNATION,
   CORAL,
@@ -16,4 +17,22 @@ export const DEFAULT_THEMES = {
   font: {
     body: "arial",
   },
-} as const;
+};
+
+export const THEME_CONTRACT = {
+  colors: {
+    brand: Object.keys(SHOCKING_PINK).reduce(
+      (acc, curr) => ({
+        ...acc,
+        [curr]: "",
+      }),
+      {} as ThemeColor,
+    ),
+  },
+  gradient: {
+    v1: "",
+  },
+  font: {
+    body: "",
+  },
+};

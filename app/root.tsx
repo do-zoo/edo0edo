@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { ThemeProvider } from "~/context";
-import { theme } from "~/configs/theme";
+import { theme } from "~/configs/theme/theme.css";
 import React from "react";
 
 // export const links: LinksFunction = () => [

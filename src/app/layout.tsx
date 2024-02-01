@@ -5,6 +5,7 @@ import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
 import { cssVariablesResolverTheme, theme } from '@edo0edo/configs/theme';
 import { Footer, Header } from '@edo0edo/components';
 import { Bai_Jamjuree, Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 
 const baiJamjure = Bai_Jamjuree({
   subsets: ['latin'],
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: any }) {
           </Container>
           <Footer />
         </MantineProvider>
+        <Analytics />
       </body>
     </html>
   );

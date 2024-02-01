@@ -1,0 +1,11 @@
+:root {
+    --self-gradient: linear-gradient(90deg, #B16CEA 14.06%, #FF5E69 44.79%, #FF8A56 71.87%, #FFA84B 100%);
+}
+
+
+.text-self-gradient {
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: var(--self-gradient);
+}

@@ -11387,6 +11387,7 @@ __metadata:
     stylelint: "npm:^15.11.0"
     stylelint-config-standard-scss: "npm:^11.1.0"
     ts-jest: "npm:^29.1.1"
+    type-fest: "npm:^4.10.2"
     typescript: "npm:5.2.2"
   languageName: unknown
   linkType: soft
@@ -15238,6 +15239,13 @@ __metadata:
   version: 3.13.1
   resolution: "type-fest@npm:3.13.1"
   checksum: 547d22186f73a8c04590b70dcf63baff390078c75ea8acd366bbd510fd0646e348bd1970e47ecf795b7cff0b41d26e9c475c1fedd6ef5c45c82075fbf916b629
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^4.10.2":
+  version: 4.10.2
+  resolution: "type-fest@npm:4.10.2"
+  checksum: 740f7d30da742ff413e8690ec10a24df054bfd87575cf92691b77f5a6b8185c582da529b84ceb13771482599e085712beec51492feaef2a1adc8661c0a47ecba
   languageName: node
   linkType: hard
 

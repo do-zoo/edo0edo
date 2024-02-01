@@ -1,4 +1,5 @@
 import { Avatar, Button, Group, Stack, Text, Title } from '@mantine/core';
+import Link from 'next/link';
 import classes from './Hero.module.css';
 
 export function Hero() {
@@ -19,8 +20,10 @@ export function Hero() {
           </Text>
         </Stack>
         <Group gap={18} justify="center">
-          <Button>GET IN TOUCH</Button>
-          <Button variant="outline" color="white">
+          <Button component={Link} href="mailto:edwardedo603@gmail.com">
+            GET IN TOUCH
+          </Button>
+          <Button variant="outline" color="white" component={Link} href="https://github.com/do-zoo">
             VIEW ALL WORKS
           </Button>
         </Group>

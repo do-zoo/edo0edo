@@ -89,7 +89,9 @@ export function Header() {
           </Group>
 
           <Group visibleFrom="sm">
-            <Button>Let’S Talk</Button>
+            <Button component={Link} href="mailto:edwardedo603@gmail.com">
+              Let’S Talk
+            </Button>
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
@@ -123,7 +125,9 @@ export function Header() {
             <Divider my="sm" />
 
             <Group justify="center" grow pb="xl" px="md">
-              <Button>Let’S Talk</Button>
+              <Button component={Link} href="mailto:edwardedo603@gmail.com">
+                Let’S Talk
+              </Button>
             </Group>
           </ScrollArea>
         </Drawer>

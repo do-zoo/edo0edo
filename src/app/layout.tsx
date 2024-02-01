@@ -6,7 +6,7 @@ import { cssVariablesResolverTheme, theme } from '@edo0edo/configs/theme';
 import { Footer, Header } from '@edo0edo/components';
 import { Bai_Jamjuree, Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/dist/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const baiJamjure = Bai_Jamjuree({
   subsets: ['latin'],

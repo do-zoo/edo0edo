@@ -10,15 +10,6 @@ export function Header() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
 
   return (
-    // <Group justify="space-between">
-    //   <Logo
-    //     width="60"
-    //     style={{
-    //       color: 'white',
-    //     }}
-    //   />
-    // </Group>
-
     <header className={classes.header}>
       <Container pos="relative" h="100%">
         <Group justify="space-between" h="100%">

@@ -1,4 +1,4 @@
-import { MantineThemeComponents, Container, Button } from '@mantine/core';
+import { MantineThemeComponents, Container, Button, Badge } from '@mantine/core';
 import type { PartialObjectDeep } from 'type-fest/source/partial-deep';
 
 export const componentsTheme: PartialObjectDeep<MantineThemeComponents, {}> = {
@@ -14,6 +14,12 @@ export const componentsTheme: PartialObjectDeep<MantineThemeComponents, {}> = {
       size: 'md',
       color: 'dark',
       variant: 'white',
+    },
+  }),
+
+  Badge: Badge.extend({
+    defaultProps: {
+      variant: 'gradient',
     },
   }),
 };

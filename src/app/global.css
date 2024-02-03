@@ -9,3 +9,45 @@
     -webkit-background-clip: text;
     background-image: var(--self-gradient);
 }
+
+.title-1{
+    font-family: var(--font-bai-jamjure), sans-serif;
+    font-weight: 700;
+    font-size: rem(72px);
+    color: light-dark(var(--mantine-color-dark-5), var(--mantine-color-white));
+    @media (max-width: $mantine-breakpoint-md) {
+        font-size: rem(48px);
+    }
+
+    @media (max-width: $mantine-breakpoint-xs) {
+        font-size: rem(36px);
+    }
+}
+
+.title-2{
+    font-family: var(--font-bai-jamjure), sans-serif;
+    font-weight: 700;
+    font-size: rem(64px);
+    color: light-dark(var(--mantine-color-dark-5), var(--mantine-color-white));
+    @media (max-width: $mantine-breakpoint-md) {
+        font-size: rem(44px);
+    }
+
+    @media (max-width: $mantine-breakpoint-xs) {
+        font-size: rem(32px);
+    }
+}
+
+.title-3 {
+    color: light-dark(var(--mantine-color-dark-5), var(--mantine-color-white));
+    font-family: var(--font-bai-jamjure), sans-serif;
+    font-weight: 700;
+    font-size: rem(54px);
+    @media (max-width: $mantine-breakpoint-md) {
+        font-size: rem(42px);
+    }
+
+    @media (max-width: $mantine-breakpoint-xs) {
+        font-size: rem(28px);
+    }
+}

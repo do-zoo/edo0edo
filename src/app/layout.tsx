@@ -1,12 +1,12 @@
-import '@mantine/core/styles.css';
-import './global.css';
-import React from 'react';
-import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
-import { cssVariablesResolverTheme, theme } from '@edo0edo/configs/theme';
 import { Footer, Header } from '@edo0edo/components';
-import { Bai_Jamjuree, Inter } from 'next/font/google';
+import { cssVariablesResolverTheme, theme } from '@edo0edo/configs/theme';
+import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Bai_Jamjuree, Inter } from 'next/font/google';
+import './global.css';
 
 const baiJamjure = Bai_Jamjuree({
   subsets: ['latin'],
@@ -26,10 +26,13 @@ export const metadata = {
   description: 'Web Developer based on Jakarta, Indonesia',
 };
 
+const { GTM_ID, GA_ID } = process.env;
+
 export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en" className={`${baiJamjure.variable} ${inter.variable}`}>
       <head>
+        {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
         <ColorSchemeScript defaultColorScheme="dark" />
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
@@ -52,6 +55,7 @@ export default function RootLayout({ children }: { children: any }) {
         </MantineProvider>
         <Analytics />
         <SpeedInsights />
+        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>
   );

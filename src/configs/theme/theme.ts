@@ -7,13 +7,19 @@ import { colorsTheme } from './colors.theme';
 export const themeOverride = createTheme({
   /* Put your mantine theme override here */
   components: componentsTheme,
-  headings: { fontFamily: 'var(--font-bai-jamjure), sans-serif', fontWeight: '700' },
+  headings: {
+    fontFamily: 'var(--font-bai-jamjure), sans-serif',
+    fontWeight: '700',
+    sizes: {
+      h1: {},
+    },
+  },
   fontFamily: 'var(--font-inter), sans',
   colors: colorsTheme,
   defaultGradient: {
     from: 'lavender',
-    to: 'carnation',
-    deg: 45,
+    to: 'sunshade',
+    deg: 90,
   },
   defaultRadius: 'xl',
 });

@@ -1,4 +1,4 @@
-import { Avatar, Button, Group, Stack, Text, Title } from '@mantine/core';
+import { Avatar, Button, Group, Stack, Text } from '@mantine/core';
 import Link from 'next/link';
 import classes from './Hero.module.css';
 
@@ -8,12 +8,12 @@ export function Hero() {
       <Stack gap={32} align="center">
         <Avatar src="/images/jpg/hero-avatar.jpg" className={classes.avatar} />
         <Stack gap={24} align="center">
-          <Title className={classes.title} ta="center">
-            <Text span className={`${classes.title} text-self-gradient`}>
+          <Text className="title-1" ta="center" component="h1">
+            <Text span className="text-self-gradient" fz="inherit">
               Hello, I&apos;m Edwar
             </Text>
             . Web Developer based in Indonesia.
-          </Title>
+          </Text>
           <Text ta="center" maw={600}>
             A Web Developer in Indonesia. Specialist skilled in Front-End Dev, using JavaScript to
             create engaging, optimized websites.

@@ -1,6 +1,12 @@
 import { DefaultMantineColor, MantineColorsTuple, MantineThemeColorsOverride } from '@mantine/core';
 
-type ExtendedCustomColors = 'carnation' | 'lavender' | 'coral' | 'sunshade' | DefaultMantineColor;
+type ExtendedCustomColors =
+  | 'carnation'
+  | 'lavender'
+  | 'coral'
+  | 'sunshade'
+  | 'shark'
+  | DefaultMantineColor;
 
 declare module '@mantine/core' {
   export interface MantineThemeColorsOverride {
@@ -60,5 +66,17 @@ export const colorsTheme: Partial<MantineThemeColorsOverride['colors']> = {
     '#9d3c0f',
     '#7e3310',
     '#441706',
+  ],
+  shark: [
+    '#ededf1',
+    '#d7d8e0',
+    '#b5b6c4',
+    '#8c8ea4',
+    '#6e7189',
+    '#595a70',
+    '#48495c',
+    '#3e3e4e',
+    '#373843',
+    '#1c1c22',
   ],
 };

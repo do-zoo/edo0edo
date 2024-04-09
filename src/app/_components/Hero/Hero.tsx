@@ -12,11 +12,11 @@ export function Hero() {
             <Text span className="text-self-gradient" fz="inherit">
               Hello, I&apos;m Edwar
             </Text>
-            . Web Developer based in Indonesia.
+            . JavaScript Developer based in Indonesia.
           </Text>
           <Text ta="center" maw={600}>
-            A Web Developer in Indonesia. Specialist skilled in Front-End Dev, using JavaScript to
-            create engaging, optimized websites.
+            A JavaScript Developer in Indonesia. Skilled specialist in Front-End Dev, creating
+            engaging and optimized websites.
           </Text>
         </Stack>
         <Group gap={18} justify="center">

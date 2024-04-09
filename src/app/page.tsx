@@ -1,4 +1,4 @@
-import { Hero, ProjectReport, ShowcaseProject } from '@edo0edo/app/_components';
+import { Hero, ProjectReport, Skills } from '@edo0edo/app/_components';
 import { Stack } from '@mantine/core';
 
 export default function HomePage() {
@@ -7,8 +7,9 @@ export default function HomePage() {
       <Stack pt={80} mih="100vh" justify="center">
         <Hero />
       </Stack>
-      <ShowcaseProject />
+      {/* <ShowcaseProject /> */}
       <ProjectReport />
+      <Skills />
     </Stack>
   );
 }

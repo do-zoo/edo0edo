@@ -1,0 +1,27 @@
+.card {
+  font-family: var(--font-bai-jamjure), sans-serif;
+  font-weight: 700;
+  background-color: var(--mantine-color-shark-9);
+  /* width: rem(180); */
+
+  .skillName {
+    text-align: center;
+    font-family: inherit;
+    font-size: rem(28px);
+
+    @media (max-width: $mantine-breakpoint-md) {
+      font-size: rem(26px);
+    }
+
+    @media (max-width: $mantine-breakpoint-xs) {
+      font-size: rem(20px);
+    }
+  }
+}
+
+.gridCol {
+  @media (max-width: 20em) {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}

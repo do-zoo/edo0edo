@@ -3,8 +3,6 @@ import { cssVariablesResolverTheme, theme } from '@edo0edo/configs/theme';
 import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Bai_Jamjuree, Inter } from 'next/font/google';
 import './global.css';
 
@@ -53,8 +51,8 @@ export default function RootLayout({ children }: { children: any }) {
           </Container>
           <Footer />
         </MantineProvider>
-        <Analytics />
-        <SpeedInsights />
+        {/* <Analytics /> */}
+        {/* <SpeedInsights /> */}
         {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>

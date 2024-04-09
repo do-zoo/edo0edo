@@ -12,4 +12,13 @@ export default withBundleAnalyzer({
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
+  images: {
+    dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        hostname: 'skillicons.dev',
+        protocol: 'https',
+      },
+    ],
+  },
 });

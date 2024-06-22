@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <div className={classes.hero}>
       <Stack gap={32} align="center">
-        <Avatar src="/images/png/hero-avatar.png" className={classes.avatar} />
+        <Avatar src="/images/jpg/hero-avatar.jpg" className={classes.avatar} />
         <Stack gap={24} align="center">
           <Text className="title-1" ta="center" component="h1">
             <Text span className="text-self-gradient" fz="inherit">

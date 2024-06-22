@@ -11,7 +11,7 @@ export function ProjectReport() {
           md: 5,
         }}
       >
-        <Text className={classes.selfIntroduce}>
+        <Text className={classes.selfIntroduce} component="div">
           <Text className={classes.name}>
             <span className="text-self-gradient">EDWAR</span>
           </Text>

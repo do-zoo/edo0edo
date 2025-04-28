@@ -60,9 +60,15 @@ export default function RootLayout({ children }: { children: any }) {
               url: 'https://edo0edo.me',
               image: {
                 '@type': 'ImageObject',
-                url: 'https://edo0edo.me/images/jpg/hero-avatar.jpg',
-                height: '600',
-                width: '600',
+                contentUrl: 'https://edo0edo.me/images/jpg/hero-avatar.jpg',
+                license: 'https://edo0edo.me/license',
+                acquireLicensePage: 'https://edo0edo.me/image-usage',
+                creditText: 'Edo0Edo Studio',
+                creator: {
+                  '@type': 'Person',
+                  name: 'Edo',
+                },
+                copyrightNotice: 'Edo',
               },
               jobTitle: 'Web Developer',
               worksFor: {
@@ -114,9 +120,15 @@ export default function RootLayout({ children }: { children: any }) {
                 url: 'https://edo0edo.me',
                 image: {
                   '@type': 'ImageObject',
-                  url: 'https://edo0edo.me/images/jpg/hero-avatar.jpg',
-                  height: '600',
-                  width: '600',
+                  contentUrl: 'https://edo0edo.me/images/jpg/hero-avatar.jpg',
+                  license: 'https://edo0edo.me/license',
+                  acquireLicensePage: 'https://edo0edo.me/image-usage',
+                  creditText: 'Edo0Edo Studio',
+                  creator: {
+                    '@type': 'Person',
+                    name: 'Edo',
+                  },
+                  copyrightNotice: 'Edo',
                 },
                 address: {
                   '@type': 'PostalAddress',

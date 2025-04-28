@@ -1,11 +1,13 @@
+import '@mantine/core/styles.css';
+import './global.css';
+
 import { Footer, Header } from '@edo0edo/components';
 import { cssVariablesResolverTheme, theme } from '@edo0edo/configs/theme';
 import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
-import '@mantine/core/styles.css';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-import { Bai_Jamjuree, Inter } from 'next/font/google';
-import './global.css';
 import { Metadata } from 'next';
+import { Bai_Jamjuree, Inter } from 'next/font/google';
+import { Person, Review, WithContext } from 'schema-dts';
 
 const baiJamjure = Bai_Jamjuree({
   subsets: ['latin'],
@@ -59,8 +61,8 @@ export default function RootLayout({ children }: { children: any }) {
               image: {
                 '@type': 'ImageObject',
                 url: 'https://edo0edo.me/images/jpg/hero-avatar.jpg',
-                height: 600,
-                width: 600,
+                height: '600',
+                width: '600',
               },
               jobTitle: 'Web Developer',
               worksFor: {
@@ -79,14 +81,7 @@ export default function RootLayout({ children }: { children: any }) {
                 'https://www.linkedin.com/in/edo0edo',
                 'https://www.instagram.com/edo0edo',
               ],
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: '4.9',
-                reviewCount: '25',
-                bestRating: '5',
-                worstRating: '1',
-              },
-            }),
+            } as WithContext<Person>),
           }}
         />
         <script
@@ -97,24 +92,45 @@ export default function RootLayout({ children }: { children: any }) {
               '@type': 'Review',
               author: {
                 '@type': 'Person',
-                name: 'Happy Client',
+                name: 'Isa J.P Simanjuntak',
+                url: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7138236835821977600?commentUrn=urn%3Ali%3Acomment%3A%28ugcPost%3A7138236835821977600%2C7180160516751810560%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287180160516751810560%2Curn%3Ali%3AugcPost%3A7138236835821977600%29',
               },
-              datePublished: '2025-04-29',
+              publisher: {
+                '@type': 'Organization',
+                name: 'LinkedIn',
+              },
+              datePublished: '2024-03-31',
               description:
-                'Edwar is an excellent web developer! He built our website quickly, with high quality and great communication. Highly recommended.',
-              itemReviewed: {
-                '@type': 'Person',
-                name: 'Edwar',
-                jobTitle: 'Web Developer',
-                url: 'https://edo0edo.me',
-              },
+                'It was a pleasure working with Edwar. Fast response, can provide the best input and can apply web ideas with maximum results 👍🔥 Excellent!',
               reviewRating: {
                 '@type': 'Rating',
                 ratingValue: '5',
                 bestRating: '5',
                 worstRating: '1',
               },
-            }),
+              itemReviewed: {
+                '@type': 'LocalBusiness',
+                name: 'Edo Web Development',
+                url: 'https://edo0edo.me',
+                image: {
+                  '@type': 'ImageObject',
+                  url: 'https://edo0edo.me/images/jpg/hero-avatar.jpg',
+                  height: '600',
+                  width: '600',
+                },
+                address: {
+                  '@type': 'PostalAddress',
+                  streetAddress: 'Jakarta',
+                  addressLocality: 'Jakarta',
+                  addressCountry: 'ID',
+                  postalCode: '11320',
+                },
+                telephone: '+62-851-5735-8266',
+                priceRange: '$$',
+                description:
+                  'Professional freelance web development service based in Jakarta, Indonesia.',
+              },
+            } as WithContext<Review>),
           }}
         />
       </head>

@@ -45,7 +45,7 @@ export function Footer() {
               variant="outline"
               radius="xl"
               component={Link}
-              href="https://www.instagram.com/ed.0.1/"
+              href="https://www.instagram.com/edo0edo"
               target="_blank"
             >
               <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} />

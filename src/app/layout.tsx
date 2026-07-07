@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 import { personJsonLd, reviewJsonLd } from '@/lib/seo/json-ld';
 import './globals.css';
 
@@ -43,7 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
-        {children}
+        <Header />
+        <main className="mx-auto min-h-screen max-w-5xl px-4">{children}</main>
+        <Footer />
         {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>

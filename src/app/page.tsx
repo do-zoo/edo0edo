@@ -1,11 +1,15 @@
 import Link from 'next/link';
+import { ProjectCard } from '@/components/project-card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { SkillGrid } from '@/components/skill-grid';
 import { StatsSection } from '@/components/stats-section';
 import { about } from '@/data/about';
+import { getFeaturedProjects } from '@/lib/sanity/fetch';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const featuredProjects = await getFeaturedProjects();
+
   return (
     <div className="space-y-24 py-12">
       <section className="flex min-h-[80vh] flex-col items-center justify-center text-center">
@@ -31,6 +35,17 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
+
+      {featuredProjects.length > 0 && (
+        <section>
+          <h2 className="mb-8 text-2xl font-bold">Featured Projects</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project._id} project={project} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section>
         <h2 className="mb-8 text-2xl font-bold">At a Glance</h2>

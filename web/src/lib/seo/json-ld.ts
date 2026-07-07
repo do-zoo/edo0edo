@@ -85,7 +85,20 @@ export function blogPostingJsonLd(post: {
   modifiedAt?: string;
   coverImageUrl?: string;
 }) {
-  const jsonLd = {
+  const jsonLd: {
+    '@context': 'https://schema.org';
+    '@type': 'BlogPosting';
+    headline: string;
+    description: string;
+    url: string;
+    image?: string;
+    author: { '@type': 'Person'; name: string; url: string };
+    mainEntityOfPage: string;
+    publisher: { '@type': 'Person'; name: string; url: string };
+    inLanguage: string;
+    datePublished?: string;
+    dateModified?: string;
+  } = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
@@ -117,7 +130,20 @@ export function creativeWorkJsonLd(project: {
   coverImageUrl?: string;
   liveUrl?: string;
 }) {
-  const jsonLd = {
+  const jsonLd: {
+    '@context': 'https://schema.org';
+    '@type': 'CreativeWork';
+    name: string;
+    description: string;
+    url: string;
+    image?: string;
+    author: { '@type': 'Person'; name: string; url: string };
+    mainEntityOfPage: string;
+    inLanguage: string;
+    datePublished?: string;
+    dateModified?: string;
+    sameAs?: string;
+  } = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
     name: project.title,

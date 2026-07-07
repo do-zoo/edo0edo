@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { PortableText } from '@/components/portable-text';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { ProjectDetail } from '@/components/project-detail';
 import { getProjectBySlug, getProjectSlugs } from '@/lib/sanity/fetch';
 import { getTitle } from '@/lib/sanity/helpers';
 import { urlFor } from '@/lib/sanity/image';
@@ -32,8 +28,9 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
-  const title = getTitle(project.title, 'Project');
-  const imageUrl = project.coverImage ? urlFor(project.coverImage) : null;
+  const imageUrl = project.coverImage
+    ? urlFor(project.coverImage, { width: 1200, height: 630 })
+    : null;
   const jsonLd = creativeWorkJsonLd({
     title: project.title ?? 'Project',
     slug,
@@ -49,49 +46,8 @@ export default async function ProjectDetailPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <article className="space-y-8 py-12 md:py-16">
-        {imageUrl && (
-          <div className="relative aspect-video overflow-hidden rounded-xl ring-1 ring-border/60">
-            <Image src={imageUrl} alt={title} fill className="object-cover" />
-          </div>
-        )}
-        <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-primary">
-            Project
-          </p>
-          <h1 className="mt-2 font-display text-4xl font-bold tracking-tight md:text-5xl">
-            {title}
-          </h1>
-        </div>
-        <p className="text-lg leading-relaxed text-muted-foreground">
-          {project.description}
-        </p>
-        {project.tags && (
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        )}
-        <div className="flex gap-4">
-          {project.liveUrl && (
-            <Button asChild>
-              <Link href={project.liveUrl} target="_blank">
-                Live Demo
-              </Link>
-            </Button>
-          )}
-          {project.githubUrl && (
-            <Button variant="outline" asChild>
-              <Link href={project.githubUrl} target="_blank">
-                GitHub
-              </Link>
-            </Button>
-          )}
-        </div>
-        {project.body && <PortableText value={project.body} />}
+      <article>
+        <ProjectDetail project={project} />
       </article>
     </>
   );

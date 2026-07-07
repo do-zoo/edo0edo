@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { formatPublishedDate, getSlug, getTitle } from '@/lib/sanity/helpers';
-import { urlFor } from '@/lib/sanity/image';
+import { sanityImageLoader, urlFor } from '@/lib/sanity/image';
 import type { PostListItem } from '@/lib/sanity/types';
 
 export function BlogCard({ post }: { post: PostListItem }) {
@@ -28,6 +28,7 @@ export function BlogCard({ post }: { post: PostListItem }) {
             src={imageUrl}
             alt={title}
             fill
+            loader={sanityImageLoader}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

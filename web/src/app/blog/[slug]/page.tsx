@@ -5,7 +5,7 @@ import { PortableText } from '@/components/portable-text';
 import { Badge } from '@/components/ui/badge';
 import { getPostBySlug, getPostSlugs } from '@/lib/sanity/fetch';
 import { formatPublishedDate, getTitle } from '@/lib/sanity/helpers';
-import { urlFor } from '@/lib/sanity/image';
+import { sanityImageLoader, urlFor } from '@/lib/sanity/image';
 import { blogPostingJsonLd } from '@/lib/seo/json-ld';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -50,7 +50,13 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="space-y-8 py-12 md:py-16">
         {imageUrl && (
           <div className="relative aspect-video overflow-hidden rounded-xl ring-1 ring-border/60">
-            <Image src={imageUrl} alt={title} fill className="object-cover" />
+            <Image
+              src={imageUrl}
+              alt={title}
+              fill
+              loader={sanityImageLoader}
+              className="object-cover"
+            />
           </div>
         )}
         <div>

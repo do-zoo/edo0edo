@@ -1,3 +1,4 @@
+import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
@@ -14,22 +15,39 @@ export function ProjectCard({ project }: { project: ProjectListItem }) {
   const title = getTitle(project.title, 'Project');
 
   return (
-    <Link href={`/projects/${slug}`}>
-      <Card className="overflow-hidden border-border transition-opacity hover:opacity-80">
+    <Link href={`/projects/${slug}`} className="group block">
+      <Card className="card-hover overflow-hidden bg-card ring-border/60">
         {imageUrl && (
-          <div className="relative aspect-video">
-            <Image src={imageUrl} alt={title} fill className="object-cover" />
+          <div className="relative aspect-video overflow-hidden">
+            <Image
+              src={imageUrl}
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 transition-all duration-300 group-hover:opacity-100">
+              <ArrowUpRight className="h-4 w-4" />
+            </div>
           </div>
         )}
         <CardHeader>
-          <CardTitle className="text-lg">{title}</CardTitle>
+          <CardTitle className="font-display text-lg transition-colors group-hover:text-primary">
+            {title}
+          </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">{project.description}</p>
+          <p className="line-clamp-2 text-sm text-muted-foreground">
+            {project.description}
+          </p>
           {project.tags && (
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
+                <Badge
+                  key={tag}
+                  variant="secondary"
+                  className="bg-secondary/80 text-xs"
+                >
                   {tag}
                 </Badge>
               ))}

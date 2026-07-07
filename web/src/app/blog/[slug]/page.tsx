@@ -47,15 +47,17 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <article className="space-y-8 py-12">
+      <article className="space-y-8 py-12 md:py-16">
         {imageUrl && (
-          <div className="relative aspect-video overflow-hidden rounded-lg">
+          <div className="relative aspect-video overflow-hidden rounded-xl ring-1 ring-border/60">
             <Image src={imageUrl} alt={title} fill className="object-cover" />
           </div>
         )}
         <div>
-          <p className="text-sm text-muted-foreground">{date ?? 'Draft'}</p>
-          <h1 className="mt-2 text-4xl font-bold">{title}</h1>
+          <p className="font-mono text-xs text-primary">{date ?? 'Draft'}</p>
+          <h1 className="mt-2 font-display text-4xl font-bold tracking-tight md:text-5xl">
+            {title}
+          </h1>
         </div>
         {post.tags && (
           <div className="flex flex-wrap gap-2">

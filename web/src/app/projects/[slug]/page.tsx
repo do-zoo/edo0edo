@@ -49,14 +49,23 @@ export default async function ProjectDetailPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <article className="space-y-8 py-12">
+      <article className="space-y-8 py-12 md:py-16">
         {imageUrl && (
-          <div className="relative aspect-video overflow-hidden rounded-lg">
+          <div className="relative aspect-video overflow-hidden rounded-xl ring-1 ring-border/60">
             <Image src={imageUrl} alt={title} fill className="object-cover" />
           </div>
         )}
-        <h1 className="text-4xl font-bold">{title}</h1>
-        <p className="text-lg text-muted-foreground">{project.description}</p>
+        <div>
+          <p className="font-mono text-xs uppercase tracking-widest text-primary">
+            Project
+          </p>
+          <h1 className="mt-2 font-display text-4xl font-bold tracking-tight md:text-5xl">
+            {title}
+          </h1>
+        </div>
+        <p className="text-lg leading-relaxed text-muted-foreground">
+          {project.description}
+        </p>
         {project.tags && (
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (

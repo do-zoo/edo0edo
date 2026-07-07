@@ -1,19 +1,26 @@
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { JetBrains_Mono, Plus_Jakarta_Sans, Syne } from 'next/font/google';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
+import { SiteContainer } from '@/components/site-container';
 import { personJsonLd, reviewJsonLd } from '@/lib/seo/json-ld';
 import './globals.css';
 
-const geistSans = Geist({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-geist-sans',
+  variable: '--font-sans',
 });
 
-const geistMono = Geist_Mono({
+const syne = Syne({
   subsets: ['latin'],
-  variable: '--font-geist-mono',
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700', '800'],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
 });
 
 export const metadata: Metadata = {
@@ -37,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${geistSans.variable} ${geistMono.variable}`}
+      className={`dark ${plusJakarta.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
@@ -51,9 +58,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd()) }}
         />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="min-h-screen overflow-x-hidden bg-background font-sans antialiased">
         <Header />
-        <main className="mx-auto min-h-screen max-w-5xl px-4">{children}</main>
+        <main className="relative w-full min-h-screen">
+          <SiteContainer>{children}</SiteContainer>
+        </main>
         <Footer />
         {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>

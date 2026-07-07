@@ -54,6 +54,7 @@ export default async function BlogPostPage({ params }: Props) {
               src={imageUrl}
               alt={title}
               fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
               loader={sanityImageLoader}
               className="object-cover"
             />

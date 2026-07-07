@@ -60,6 +60,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                   alt={title}
                   fill
                   priority
+                  sizes="(max-width: 1280px) 100vw, 1280px"
                   loader={sanityImageLoader}
                   className="object-cover"
                 />

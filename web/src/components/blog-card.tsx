@@ -28,6 +28,7 @@ export function BlogCard({ post }: { post: PostListItem }) {
             src={imageUrl}
             alt={title}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
             loader={sanityImageLoader}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />

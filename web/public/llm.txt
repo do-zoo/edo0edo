@@ -1,0 +1,34 @@
+# edo0edo.me
+
+> Personal portfolio website of Edwar, a JavaScript Developer based in Jakarta, Indonesia.
+
+## Site Summary
+
+- Owner: Edwar
+- Role: JavaScript Developer
+- Focus: Front-end development, modern websites, web applications
+- Location: Jakarta, Indonesia
+- Primary language: English
+
+## Canonical Website URL
+
+https://edo0edo.me
+
+## Important Pages
+
+- Home: https://edo0edo.me/
+- About: https://edo0edo.me/about
+- Projects: https://edo0edo.me/projects
+- Blog: https://edo0edo.me/blog
+
+## Content Types
+
+- Portfolio project case studies
+- Blog posts about web development and JavaScript
+- Professional profile and skills
+
+## Contact
+
+- Email: edwardedo603@gmail.com
+- GitHub: https://github.com/do-zoo
+- LinkedIn: https://www.linkedin.com/in/edo0edo

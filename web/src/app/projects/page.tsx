@@ -7,6 +7,9 @@ import { getProjects } from '@/lib/sanity/fetch';
 export const metadata: Metadata = {
   title: 'Projects | Edwar',
   description: 'A collection of projects I have worked on.',
+  alternates: {
+    canonical: '/projects',
+  },
 };
 
 export default async function ProjectsPage() {

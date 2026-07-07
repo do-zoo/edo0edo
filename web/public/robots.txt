@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://edo0edo.me/sitemap.xml
+Llm: https://edo0edo.me/llm.txt

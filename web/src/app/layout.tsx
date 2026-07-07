@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     'Web Developer Jakarta, Freelance Web Developer, Website Developer Indonesia, Frontend Developer, Backend Developer, Fullstack Developer',
   authors: [{ name: 'Edwar' }],
   robots: 'index, follow',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 const { GTM_ID } = process.env;

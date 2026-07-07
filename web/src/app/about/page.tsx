@@ -13,6 +13,9 @@ import { ArrowUpRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'About | Edwar',
   description: about.bio,
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export default function AboutPage() {

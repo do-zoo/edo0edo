@@ -7,6 +7,9 @@ import { getPosts } from '@/lib/sanity/fetch';
 export const metadata: Metadata = {
   title: 'Blog | Edwar',
   description: 'Thoughts on web development, JavaScript, and building things.',
+  alternates: {
+    canonical: '/blog',
+  },
 };
 
 export default async function BlogPage() {

@@ -22,6 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${getTitle(post.title, 'Blog Post')} | Edwar`,
     description: post.excerpt ?? undefined,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
   };
 }
 

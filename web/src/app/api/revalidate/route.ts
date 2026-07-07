@@ -1,6 +1,7 @@
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { type NextRequest } from 'next/server';
 import { parseBody } from 'next-sanity/webhook';
+import { submitIndexNowUrls } from '@/lib/seo/indexnow';
 
 type WebhookPayload = {
   _type?: string;
@@ -19,6 +20,8 @@ export async function POST(req: NextRequest) {
       return new Response('Invalid signature', { status: 401 });
     }
 
+    const indexNowPaths = new Set<string>(['/', '/projects', '/blog']);
+
     if (body?._type === 'project') {
       revalidateTag('project', 'max');
       revalidatePath('/projects');
@@ -26,6 +29,7 @@ export async function POST(req: NextRequest) {
       if (body.slug?.current) {
         revalidateTag(`project:${body.slug.current}`, 'max');
         revalidatePath(`/projects/${body.slug.current}`);
+        indexNowPaths.add(`/projects/${body.slug.current}`);
       }
     }
 
@@ -35,7 +39,14 @@ export async function POST(req: NextRequest) {
       if (body.slug?.current) {
         revalidateTag(`post:${body.slug.current}`, 'max');
         revalidatePath(`/blog/${body.slug.current}`);
+        indexNowPaths.add(`/blog/${body.slug.current}`);
       }
+    }
+
+    try {
+      await submitIndexNowUrls([...indexNowPaths]);
+    } catch (error) {
+      console.error('IndexNow submission failed:', error);
     }
 
     return Response.json({ revalidated: true, now: Date.now() });

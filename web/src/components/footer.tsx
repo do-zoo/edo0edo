@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { Code2, ContactRound, Globe } from 'lucide-react';
 import Link from 'next/link';
 import FadeContent from '@/components/FadeContent';
+import { Logo } from '@/components/logo';
 import { SiteContainer } from '@/components/site-container';
 import { about } from '@/data/about';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
@@ -51,9 +52,10 @@ export function Footer() {
             <div>
               <Link
                 href="/"
-                className="font-display text-lg font-bold tracking-tight"
+                aria-label="edo0edo home"
+                className="inline-block text-foreground transition-opacity hover:opacity-80"
               >
-                edo<span className="text-primary">0</span>edo
+                <Logo size={32} />
               </Link>
               <p className="mt-2 max-w-xs text-sm text-muted-foreground">
                 {about.title} based in {about.location}. Building thoughtful web

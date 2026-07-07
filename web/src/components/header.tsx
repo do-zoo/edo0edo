@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/sheet';
 import { about } from '@/data/about';
 import { cn } from '@/lib/utils';
+import { Logo } from '@/components/logo';
 import { SiteContainer } from '@/components/site-container';
 
 const navLinks = [
@@ -41,9 +42,10 @@ export function Header() {
       <SiteContainer className="flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="font-display text-lg font-bold tracking-tight transition-colors hover:text-primary"
+          aria-label="edo0edo home"
+          className="text-foreground transition-opacity hover:opacity-80"
         >
-          edo<span className="text-primary">0</span>edo
+          <Logo size={28} />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

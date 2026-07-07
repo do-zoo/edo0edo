@@ -103,8 +103,65 @@
 
 }
 
+@media (scripting: none) {
+  [data-animated-content] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .card-hover,
   .card-hover:hover {
     transform: none;
+    transition: none;
+  }
+
+  .hero-background {
+    min-height: 100svh;
+  }
+
+  .hero-background .motion-aurora,
+  .hero-background .motion-noise {
+    display: none !important;
+  }
+
+  .hero-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom right,
+      color-mix(in oklch, var(--primary) 10%, transparent),
+      var(--background),
+      color-mix(in oklch, var(--accent) 10%, transparent)
+    );
+    pointer-events: none;
+  }
+
+  .motion-aurora canvas,
+  .motion-noise {
+    visibility: hidden !important;
+  }
+
+  .motion-electric-border > div:not(:last-child) {
+    display: none !important;
+  }
+
+  .motion-electric-border {
+    border: 1px solid var(--border);
   }
 }

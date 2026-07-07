@@ -21,6 +21,7 @@ export function AnimatedSectionHeading({
 
   return (
     <BlurText
+      as="span"
       text={title}
       className={cn('!inline-flex font-display font-bold', className)}
       delay={60}

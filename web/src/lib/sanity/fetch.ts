@@ -6,6 +6,7 @@ import {
   postSlugsQuery,
   postsQuery,
   projectBySlugQuery,
+  projectCountQuery,
   projectSlugsQuery,
   projectsQuery,
 } from './queries';
@@ -56,6 +57,13 @@ export async function getFeaturedProjects(): Promise<ProjectListItem[]> {
     tags: ['project'],
   });
   return result ?? [];
+}
+
+export async function getProjectCount(): Promise<number> {
+  const result = await sanityFetch<number>(projectCountQuery, {
+    tags: ['project'],
+  });
+  return result ?? 0;
 }
 
 export async function getProjectSlugs(): Promise<string[]> {

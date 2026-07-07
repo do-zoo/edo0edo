@@ -308,7 +308,7 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-visible isolate ${className ?? ''}`}
+      className={`motion-electric-border relative isolate overflow-hidden ${className ?? ''}`}
       style={{ '--electric-border-color': color, borderRadius, ...style } as CSSProperties}
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[2]">

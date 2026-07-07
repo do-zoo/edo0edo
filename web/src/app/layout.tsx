@@ -44,6 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`dark ${plusJakarta.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
       <head>

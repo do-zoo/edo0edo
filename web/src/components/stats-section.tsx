@@ -1,26 +1,35 @@
 import { Briefcase, Clock, Star } from 'lucide-react';
 import { StatValue } from '@/components/stat-value';
 import { about } from '@/data/about';
+import { getProjectCount } from '@/lib/sanity/fetch';
+import {
+  formatExperienceYears,
+  formatProjectCount,
+  getYearsOfExperience,
+} from '@/lib/stats';
 
-const stats = [
-  {
-    label: 'Projects Done',
-    value: about.stats.projects,
-    icon: Briefcase,
-  },
-  {
-    label: 'Experience',
-    value: about.stats.experience,
-    icon: Clock,
-  },
-  {
-    label: 'Client Satisfaction',
-    value: about.stats.satisfaction,
-    icon: Star,
-  },
-];
+export async function StatsSection() {
+  const projectCount = await getProjectCount();
+  const experienceYears = getYearsOfExperience();
 
-export function StatsSection() {
+  const stats = [
+    {
+      label: 'Projects Done',
+      value: formatProjectCount(projectCount),
+      icon: Briefcase,
+    },
+    {
+      label: 'Experience',
+      value: formatExperienceYears(experienceYears),
+      icon: Clock,
+    },
+    {
+      label: 'Client Satisfaction',
+      value: about.stats.satisfaction,
+      icon: Star,
+    },
+  ];
+
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
       {stats.map((stat) => (

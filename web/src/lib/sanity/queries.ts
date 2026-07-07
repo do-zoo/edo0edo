@@ -68,6 +68,10 @@ export const projectSlugsQuery =
   "slug": slug.current
 }`);
 
+export const projectCountQuery = defineQuery(
+  `count(*[_type == "project"])`,
+);
+
 export const postsQuery =
   defineQuery(`*[_type == "post"] | order(publishedAt desc) {
   _id,

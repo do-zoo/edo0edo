@@ -1,7 +1,6 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import ElectricBorder from '@/components/ElectricBorder';
 import ShinyText from '@/components/ShinyText';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { cn } from '@/lib/utils';
@@ -23,59 +22,49 @@ export function ElectricCta({
 }: ElectricCtaProps) {
   const reducedMotion = useReducedMotion();
 
-  const content = (
-    <>
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"
-        aria-hidden
-      />
-      <div className="relative">
-        {eyebrow && (
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-            {eyebrow}
-          </p>
-        )}
-        {reducedMotion ? (
-          <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
-            {title}
-          </h2>
-        ) : (
-          <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
-            <ShinyText
-              text={title}
-              color="#f4f4f5"
-              shineColor="#fbbf24"
-              speed={3}
-              className="font-display text-3xl font-bold md:text-4xl"
-            />
-          </h2>
-        )}
-        <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-          {description}
-        </p>
-        {children}
-      </div>
-    </>
-  );
-
-  if (reducedMotion) {
-    return (
-      <section
-        className={cn(
-          'relative overflow-hidden rounded-xl border border-border bg-card p-10 text-center md:p-14',
-          className
-        )}
-      >
-        {content}
-      </section>
-    );
-  }
-
   return (
-    <ElectricBorder color="#f59e0b" borderRadius={16} className={className}>
-      <section className="relative overflow-hidden rounded-[inherit] bg-card p-10 text-center md:p-14">
-        {content}
+    <div
+      className={cn(
+        'rounded-xl bg-gradient-to-br from-primary/30 via-border/50 to-accent/30 p-px',
+        className
+      )}
+    >
+      <section className="relative overflow-hidden rounded-[inherit] border border-transparent bg-card/80 p-10 text-center backdrop-blur-sm md:p-14">
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 rounded-full bg-primary/8 blur-3xl"
+          aria-hidden
+        />
+        <div className="relative">
+          {eyebrow && (
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+              {eyebrow}
+            </p>
+          )}
+          {reducedMotion ? (
+            <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
+              {title}
+            </h2>
+          ) : (
+            <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
+              <ShinyText
+                text={title}
+                color="#f4f4f5"
+                shineColor="#fbbf24"
+                speed={3}
+                className="font-display text-3xl font-bold md:text-4xl"
+              />
+            </h2>
+          )}
+          <p className="mx-auto mt-4 max-w-md text-muted-foreground">
+            {description}
+          </p>
+          {children}
+        </div>
       </section>
-    </ElectricBorder>
+    </div>
   );
 }

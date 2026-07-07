@@ -17,8 +17,8 @@ export default async function HomePage() {
   const featuredProjects = await getFeaturedProjects();
 
   return (
-    <div className="space-y-28 pb-12 md:space-y-32 md:pb-16">
-      <section className="relative -mt-16 flex min-h-screen flex-col justify-center pt-16 pb-8 md:pb-12">
+    <>
+      <section className="relative -mt-16 flex min-h-[100svh] flex-col justify-center pt-16">
         <HeroBackground />
 
         <div className="relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
@@ -78,12 +78,13 @@ export default async function HomePage() {
             </AnimatedSection>
           </div>
 
-          <AnimatedSection delay={0.15} className="relative">
+          <AnimatedSection delay={0.15} className="flex justify-center">
             <HeroAvatar name={about.name} src="/images/jpg/hero-avatar.jpg" />
           </AnimatedSection>
         </div>
       </section>
 
+      <div className="space-y-28 pb-12 md:space-y-32 md:pb-16">
       {featuredProjects.length > 0 && (
         <AnimatedSection>
           <section>
@@ -139,6 +140,7 @@ export default async function HomePage() {
           </Button>
         </ElectricCta>
       </AnimatedSection>
-    </div>
+      </div>
+    </>
   );
 }

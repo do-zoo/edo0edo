@@ -47,6 +47,13 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
+  const axis = direction === 'horizontal' ? 'x' : 'y';
+  const offset = reverse ? -distance : distance;
+  const initialTransform =
+    direction === 'horizontal'
+      ? `translateX(${offset}px) scale(${scale})`
+      : `translateY(${offset}px) scale(${scale})`;
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -57,15 +64,12 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
       scrollerTarget = document.querySelector(scrollerTarget);
     }
 
-    const axis = direction === 'horizontal' ? 'x' : 'y';
-    const offset = reverse ? -distance : distance;
     const startPct = (1 - threshold) * 100;
 
     gsap.set(el, {
       [axis]: offset,
       scale,
       opacity: animateOpacity ? initialOpacity : 1,
-      visibility: 'visible'
     });
 
     const tl = gsap.timeline({
@@ -127,7 +131,16 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
   ]);
 
   return (
-    <div ref={ref} className={`invisible ${className}`} {...props}>
+    <div
+      ref={ref}
+      data-animated-content=""
+      className={className}
+      style={{
+        opacity: animateOpacity ? initialOpacity : 1,
+        transform: initialTransform,
+      }}
+      {...props}
+    >
       {children}
     </div>
   );

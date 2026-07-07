@@ -2,12 +2,11 @@ export const about = {
   name: 'Edwar',
   title: 'JavaScript Developer',
   location: 'Jakarta, Indonesia',
+  careerStartYear: 2021,
   bio: 'A JavaScript Developer in Indonesia. Skilled specialist in Front-End Dev, creating engaging and optimized websites.',
   longBio:
     'Every moment, I am ambitious to acquire projects, and I work on them wholeheartedly to deliver maximum results for you.',
   stats: {
-    projects: '15+',
-    experience: '2+ Years',
     satisfaction: '100%',
   },
   skills: [

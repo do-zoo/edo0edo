@@ -81,37 +81,57 @@ export function blogPostingJsonLd(post: {
   title: string;
   slug: string;
   excerpt: string;
-  publishedAt: string;
+  publishedAt?: string;
+  modifiedAt?: string;
   coverImageUrl?: string;
 }) {
-  return {
+  const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
-    datePublished: post.publishedAt,
     url: `${SITE_URL}/blog/${post.slug}`,
     image: post.coverImageUrl,
     author: { '@type': 'Person', name: about.name, url: SITE_URL },
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    publisher: {
+      '@type': 'Person',
+      name: about.name,
+      url: SITE_URL,
+    },
+    inLanguage: 'en',
   };
+
+  if (post.publishedAt) jsonLd.datePublished = post.publishedAt;
+  if (post.modifiedAt) jsonLd.dateModified = post.modifiedAt;
+
+  return jsonLd;
 }
 
 export function creativeWorkJsonLd(project: {
   title: string;
   slug: string;
   description: string;
-  publishedAt: string;
+  publishedAt?: string;
+  modifiedAt?: string;
   coverImageUrl?: string;
   liveUrl?: string;
 }) {
-  return {
+  const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
     name: project.title,
     description: project.description,
-    datePublished: project.publishedAt,
-    url: project.liveUrl ?? `${SITE_URL}/projects/${project.slug}`,
+    url: `${SITE_URL}/projects/${project.slug}`,
     image: project.coverImageUrl,
     author: { '@type': 'Person', name: about.name, url: SITE_URL },
+    mainEntityOfPage: `${SITE_URL}/projects/${project.slug}`,
+    inLanguage: 'en',
   };
+
+  if (project.publishedAt) jsonLd.datePublished = project.publishedAt;
+  if (project.modifiedAt) jsonLd.dateModified = project.modifiedAt;
+  if (project.liveUrl) jsonLd.sameAs = project.liveUrl;
+
+  return jsonLd;
 }

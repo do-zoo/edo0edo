@@ -17,11 +17,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
   if (!project) return { title: 'Project Not Found' };
+  const imageUrl = project.coverImage
+    ? urlFor(project.coverImage, { width: 1200, height: 630 })
+    : null;
+  const title = `${getTitle(project.title, 'Project')} | Edwar`;
+  const description = project.description ?? undefined;
+  const canonical = `/projects/${slug}`;
   return {
-    title: `${getTitle(project.title, 'Project')} | Edwar`,
-    description: project.description ?? undefined,
+    title,
+    description,
     alternates: {
-      canonical: `/projects/${slug}`,
+      canonical,
+    },
+    openGraph: {
+      type: 'website',
+      title,
+      description,
+      url: canonical,
+      images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630 }] : [],
+    },
+    twitter: {
+      card: imageUrl ? 'summary_large_image' : 'summary',
+      title,
+      description,
+      images: imageUrl ? [imageUrl] : [],
     },
   };
 }
@@ -38,7 +57,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     title: project.title ?? 'Project',
     slug,
     description: project.description ?? '',
-    publishedAt: project.publishedAt ?? new Date().toISOString(),
+    publishedAt: project.publishedAt ?? undefined,
     coverImageUrl: imageUrl || undefined,
     liveUrl: project.liveUrl ?? undefined,
   });

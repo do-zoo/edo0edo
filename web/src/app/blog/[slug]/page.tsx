@@ -19,11 +19,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: 'Post Not Found' };
+  const imageUrl = post.coverImage
+    ? urlFor(post.coverImage, { width: 1200, height: 630 })
+    : null;
+  const title = `${getTitle(post.title, 'Blog Post')} | Edwar`;
+  const description = post.excerpt ?? undefined;
+  const canonical = `/blog/${slug}`;
   return {
-    title: `${getTitle(post.title, 'Blog Post')} | Edwar`,
-    description: post.excerpt ?? undefined,
+    title,
+    description,
     alternates: {
-      canonical: `/blog/${slug}`,
+      canonical,
+    },
+    openGraph: {
+      type: 'article',
+      title,
+      description,
+      url: canonical,
+      publishedTime: post.publishedAt ?? undefined,
+      images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630 }] : [],
+    },
+    twitter: {
+      card: imageUrl ? 'summary_large_image' : 'summary',
+      title,
+      description,
+      images: imageUrl ? [imageUrl] : [],
     },
   };
 }
@@ -40,7 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
     title: post.title ?? 'Untitled',
     slug,
     excerpt: post.excerpt ?? '',
-    publishedAt: post.publishedAt ?? new Date().toISOString(),
+    publishedAt: post.publishedAt ?? undefined,
     coverImageUrl: imageUrl || undefined,
   });
 

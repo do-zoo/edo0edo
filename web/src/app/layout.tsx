@@ -1,4 +1,4 @@
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { JetBrains_Mono, Plus_Jakarta_Sans, Syne } from 'next/font/google';
 import { Footer } from '@/components/footer';
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   robots: 'index, follow',
 };
 
-const { GTM_ID, GA_ID } = process.env;
+const { GTM_ID } = process.env;
 
 export default function RootLayout({
   children,
@@ -65,7 +65,6 @@ export default function RootLayout({
           <SiteContainer>{children}</SiteContainer>
         </main>
         <Footer />
-        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>
   );

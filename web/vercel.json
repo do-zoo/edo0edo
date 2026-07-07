@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "cd .. && pnpm install --frozen-lockfile",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.edo0edo.me"
+        }
+      ],
+      "destination": "https://edo0edo.me/:path*",
+      "permanent": true
+    }
+  ]
+}

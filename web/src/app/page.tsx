@@ -12,6 +12,7 @@ import { StatsSection } from '@/components/stats-section';
 import { Button } from '@/components/ui/button';
 import { about } from '@/data/about';
 import { getFeaturedProjects } from '@/lib/sanity/fetch';
+import { cn } from '@/lib/utils';
 
 export default async function HomePage() {
   const featuredProjects = await getFeaturedProjects();
@@ -84,7 +85,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <div className="space-y-28 pb-12 md:space-y-32 md:pb-16">
+      <div className="space-y-32 pb-20 pt-16 md:space-y-40 md:pb-24 md:pt-24">
       {featuredProjects.length > 0 && (
         <AnimatedSection>
           <section>
@@ -93,7 +94,17 @@ export default async function HomePage() {
               title="Featured Projects"
               description="Selected work spanning web apps, tools, and digital experiences."
             />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:gap-8">
+            <div
+              className={cn(
+                'grid gap-8',
+                featuredProjects.length === 1
+                  ? 'max-w-md grid-cols-1 sm:max-w-lg'
+                  : featuredProjects.length === 2
+                    ? 'grid-cols-1 sm:grid-cols-2'
+                    : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+                '2xl:gap-10',
+              )}
+            >
               {featuredProjects.map((project, index) => (
                 <AnimatedSection key={project._id} delay={index * 0.08}>
                   <ProjectCard project={project} />

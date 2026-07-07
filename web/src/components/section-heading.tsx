@@ -15,7 +15,7 @@ export function SectionHeading({
   className,
 }: SectionHeadingProps) {
   return (
-    <div className={cn('mb-10', className)}>
+    <div className={cn('mb-12 md:mb-14', className)}>
       <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">
         {eyebrow}
       </p>

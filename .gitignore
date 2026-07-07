@@ -42,6 +42,6 @@ temp-next/
 .superpowers/
 
 # local guides
-docs/project-content-generator-guide.md
+docs/guides/
 
 temp/

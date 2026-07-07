@@ -31,11 +31,11 @@ export async function StatsSection() {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="group rounded-xl border border-border/60 bg-card p-6 transition-all duration-300 hover:border-primary/30 hover:bg-card/80"
+          className="group rounded-xl border border-border/60 bg-card p-6 md:p-8 transition-all duration-300 hover:border-primary/30 hover:bg-card/80"
         >
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">

@@ -1,3 +1,4 @@
+import { AnimatedSectionHeading } from '@/components/animated-section-heading';
 import { cn } from '@/lib/utils';
 
 type SectionHeadingProps = {
@@ -19,7 +20,7 @@ export function SectionHeading({
         {eyebrow}
       </p>
       <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-4xl">
-        {title}
+        <AnimatedSectionHeading title={title} />
       </h2>
       {description && (
         <p className="mt-3 max-w-xl text-muted-foreground">{description}</p>

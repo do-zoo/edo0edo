@@ -1,4 +1,5 @@
 import { Briefcase, Clock, Star } from 'lucide-react';
+import { StatValue } from '@/components/stat-value';
 import { about } from '@/data/about';
 
 const stats = [
@@ -35,9 +36,10 @@ export function StatsSection() {
               {stat.label}
             </p>
           </div>
-          <p className="mt-4 font-display text-4xl font-bold tracking-tight">
-            {stat.value}
-          </p>
+          <StatValue
+            value={stat.value}
+            className="mt-4 block font-display text-4xl font-bold tracking-tight"
+          />
         </div>
       ))}
     </div>

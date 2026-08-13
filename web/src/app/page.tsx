@@ -1,25 +1,28 @@
-import { ArrowUpRight, MapPin } from 'lucide-react';
-import Link from 'next/link';
-import { AnimatedSection } from '@/components/animated-section';
-import { ElectricCta } from '@/components/electric-cta';
-import { HeroAvatar } from '@/components/hero-avatar';
-import { HeroBackground } from '@/components/hero-background';
-import { HeroHeadline } from '@/components/hero-headline';
-import { ProjectCard } from '@/components/project-card';
-import { SectionHeading } from '@/components/section-heading';
-import { SkillGrid } from '@/components/skill-grid';
-import { StatsSection } from '@/components/stats-section';
-import { Button } from '@/components/ui/button';
-import { about } from '@/data/about';
-import { getFeaturedProjects } from '@/lib/sanity/fetch';
-import { cn } from '@/lib/utils';
+import { ArrowUpRight, MapPin } from "lucide-react";
+import Link from "next/link";
+import { AnimatedSection } from "@/components/animated-section";
+import { ElectricCta } from "@/components/electric-cta";
+import { HeroAvatar } from "@/components/hero-avatar";
+import { HeroBackground } from "@/components/hero-background";
+import { HeroHeadline } from "@/components/hero-headline";
+import { ProjectCard } from "@/components/project-card";
+import { SectionHeading } from "@/components/section-heading";
+import { SkillGrid } from "@/components/skill-grid";
+import { StatsSection } from "@/components/stats-section";
+import { Button } from "@/components/ui/button";
+import { about } from "@/data/about";
+import { getFeaturedProjects } from "@/lib/sanity/fetch";
+import { cn } from "@/lib/utils";
+import { personJsonLd, reviewJsonLd } from "@/lib/seo/json-ld";
+import { JsonLd } from "@/components/seo/json-ld";
 
 export default async function HomePage() {
   const featuredProjects = await getFeaturedProjects();
 
   return (
     <>
-      <section className="relative -mt-16 flex min-h-[100svh] flex-col justify-center pt-16">
+      <JsonLd data={[personJsonLd(), reviewJsonLd()]} />
+      <section className="relative -mt-16 flex min-h-svh flex-col justify-center pt-16">
         <HeroBackground />
 
         <div className="relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
@@ -86,71 +89,71 @@ export default async function HomePage() {
       </section>
 
       <div className="space-y-32 pb-20 pt-16 md:space-y-40 md:pb-24 md:pt-24">
-      {featuredProjects.length > 0 && (
+        {featuredProjects.length > 0 && (
+          <AnimatedSection>
+            <section>
+              <SectionHeading
+                eyebrow="Portfolio"
+                title="Featured Projects"
+                description="Selected work spanning web apps, tools, and digital experiences."
+              />
+              <div
+                className={cn(
+                  "grid gap-8",
+                  featuredProjects.length === 1
+                    ? "max-w-md grid-cols-1 sm:max-w-lg"
+                    : featuredProjects.length === 2
+                      ? "grid-cols-1 sm:grid-cols-2"
+                      : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+                  "2xl:gap-10",
+                )}
+              >
+                {featuredProjects.map((project, index) => (
+                  <AnimatedSection key={project._id} delay={index * 0.08}>
+                    <ProjectCard project={project} />
+                  </AnimatedSection>
+                ))}
+              </div>
+            </section>
+          </AnimatedSection>
+        )}
+
         <AnimatedSection>
           <section>
             <SectionHeading
-              eyebrow="Portfolio"
-              title="Featured Projects"
-              description="Selected work spanning web apps, tools, and digital experiences."
+              eyebrow="Overview"
+              title="At a Glance"
+              description="Numbers that reflect my commitment to quality work."
             />
-            <div
-              className={cn(
-                'grid gap-8',
-                featuredProjects.length === 1
-                  ? 'max-w-md grid-cols-1 sm:max-w-lg'
-                  : featuredProjects.length === 2
-                    ? 'grid-cols-1 sm:grid-cols-2'
-                    : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-                '2xl:gap-10',
-              )}
-            >
-              {featuredProjects.map((project, index) => (
-                <AnimatedSection key={project._id} delay={index * 0.08}>
-                  <ProjectCard project={project} />
-                </AnimatedSection>
-              ))}
-            </div>
+            <StatsSection />
           </section>
         </AnimatedSection>
-      )}
 
-      <AnimatedSection>
-        <section>
-          <SectionHeading
-            eyebrow="Overview"
-            title="At a Glance"
-            description="Numbers that reflect my commitment to quality work."
-          />
-          <StatsSection />
-        </section>
-      </AnimatedSection>
+        <AnimatedSection>
+          <section>
+            <SectionHeading
+              eyebrow="Expertise"
+              title="What I Do"
+              description="Technologies and tools I use to bring ideas to life."
+            />
+            <SkillGrid />
+          </section>
+        </AnimatedSection>
 
-      <AnimatedSection>
-        <section>
-          <SectionHeading
-            eyebrow="Expertise"
-            title="What I Do"
-            description="Technologies and tools I use to bring ideas to life."
-          />
-          <SkillGrid />
-        </section>
-      </AnimatedSection>
-
-      <AnimatedSection>
-        <ElectricCta
-          eyebrow="Collaboration"
-          title="Let's Work Together"
-          description="Have a project in mind? I'd love to hear about it and help you build something great."
-        >
-          <Button asChild size="lg" className="mt-8 gap-2">
-            <Link href={`mailto:${about.social.email}`}>
-              Send Me an Email
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        </ElectricCta>
-      </AnimatedSection>
+        <AnimatedSection>
+          <ElectricCta
+            eyebrow="Collaboration"
+            title="Let's Work Together"
+            description="Have a project in mind? I'd love to hear about it and help you build something great."
+          >
+            <Button asChild size="lg" className="mt-8 gap-2">
+              <Link href={`mailto:${about.social.email}`}>
+                Send Me an Email
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </ElectricCta>
+        </AnimatedSection>
       </div>
     </>
   );

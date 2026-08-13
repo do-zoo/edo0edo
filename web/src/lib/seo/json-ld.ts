@@ -7,23 +7,29 @@ export function personJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${SITE_URL}/#person`,
     name: about.name,
     url: SITE_URL,
     image: {
       '@type': 'ImageObject',
+      url: AVATAR_URL,
       contentUrl: AVATAR_URL,
       license: `${SITE_URL}/license`,
       acquireLicensePage: `${SITE_URL}/image-usage`,
       creditText: 'Edo0Edo Studio',
-      creator: { '@type': 'Person', name: 'Edo' },
-      copyrightNotice: 'Edo',
+      creator: { '@type': 'Person', name: about.name },
+      copyrightNotice: about.name,
     },
-    jobTitle: 'Web Developer',
-    worksFor: { '@type': 'Organization', name: 'Freelance' },
+    jobTitle: about.title,
+    worksFor: {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_URL}/#localbusiness`,
+      name: 'Edo Web Development',
+    },
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Jakarta',
-      addressCountry: 'Indonesia',
+      addressCountry: 'ID',
     },
     description:
       'Professional Web Developer based in Jakarta, Indonesia. Specializing in modern websites and web applications.',
@@ -56,10 +62,12 @@ export function reviewJsonLd() {
     },
     itemReviewed: {
       '@type': 'LocalBusiness',
+      '@id': `${SITE_URL}/#localbusiness`,
       name: 'Edo Web Development',
       url: SITE_URL,
       image: {
         '@type': 'ImageObject',
+        url: AVATAR_URL,
         contentUrl: AVATAR_URL,
       },
       address: {
@@ -69,10 +77,10 @@ export function reviewJsonLd() {
         addressCountry: 'ID',
         postalCode: '11320',
       },
-      telephone: '+62-851-5735-8266',
       priceRange: '$$',
       description:
         'Professional freelance web development service based in Jakarta, Indonesia.',
+      founder: { '@id': `${SITE_URL}/#person` },
     },
   };
 }
